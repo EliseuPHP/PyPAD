@@ -1,11 +1,10 @@
 import time
 import numba
-from numba import jit
 import numpy as np
 
-y = 100
-w = 100
-v = 100
+y = 997
+w = 981
+v = 991
 
 # input matrices
 aux = np.zeros(shape=(y, v))
@@ -21,12 +20,8 @@ matrizC = np.loadtxt("arqC.dat")
 matrizC = np.reshape(matrizC, (v, -1))
 
 # multiplication function
-@jit("void(double[:,:],double[:,:],double[:,:])")
 def matmul(matrix1, matrix2, rmatrix):
-    for i in range(len(matrix1)):
-        for j in range(len(matrix2[0])):
-            for k in range(len(matrix2)):
-                rmatrix[i][j] += matrix1[i][k] * matrix2[k][j]
+    np.dot(matrix1,matrix2,rmatrix)
 
 # Calculate running time
 t1 = time.perf_counter()
