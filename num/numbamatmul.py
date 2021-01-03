@@ -28,7 +28,7 @@ def matmul(matrix1, matrix2, rmatrix):
             for k in prange(matrix2.shape[0]):
                 rmatrix[i][j] += matrix1[i][k] * matrix2[k][j]
 
-
+# reduction function
 @njit(parallel=True, nogil=True, fastmath=True)
 def prange_test(A):
     s = 0.0
